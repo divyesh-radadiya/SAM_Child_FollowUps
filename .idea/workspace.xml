@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16bae4b0-e72a-45be-9153-a9a94cd4c885" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/DischargeSummaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/DischargeSummaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/repository/DischargeSummaryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/repository/DischargeSummaryRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/DischargeSummaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/DischargeSummaryController.class" afterDir="false" />
-    </list>
+    <list default="true" id="16bae4b0-e72a-45be-9153-a9a94cd4c885" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +93,7 @@
       <workItem from="1646038614415" duration="6744000" />
       <workItem from="1646238564949" duration="6314000" />
       <workItem from="1646287826215" duration="3915000" />
-      <workItem from="1646295512550" duration="20540000" />
+      <workItem from="1646295512550" duration="20794000" />
     </task>
     <servers />
   </component>
