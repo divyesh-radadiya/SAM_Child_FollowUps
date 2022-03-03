@@ -19,15 +19,15 @@ public class DischargeSummaryController {
     private DischargeSummaryRepo dischargeSummaryRepo;
 
 
-    @RequestMapping("/data")
+    @RequestMapping("/getAll")
     @ResponseBody
     public List<DischargeSummary> getAll()
     {
         return dischargeSummaryRepo.findAll();
     }
-//    @RequestMapping("/findByAwwId/{aww_id}")
-//    public List<DischargeSummary> getAllDischargeSummaries(@PathVariable("aww_id") int awwId)
-//    {
-//        return dischargeSummaryRepo.findByAww_id(awwId);
-//    }
+    @RequestMapping("/findByAwwId/{aww_id}")
+    public List<DischargeSummary> getAllDischargeSummaries(@PathVariable("aww_id") int awwId)
+    {
+        return dischargeSummaryRepo.findDischargeSummaryByAww_AwwId(awwId);
+    }
 }
