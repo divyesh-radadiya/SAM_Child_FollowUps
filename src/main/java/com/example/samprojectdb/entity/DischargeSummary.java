@@ -1,5 +1,7 @@
 package com.example.samprojectdb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,42 +9,37 @@ import java.util.List;
 
 @Entity
 public class DischargeSummary {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dsId;
     @Column(nullable = false)
-    private String name;
+    private Date dischargeAt;
     @Column(nullable = false)
-    private String contactNumber;
-    @Column(nullable = false)
-    private Date admissionDate;
-    @Column(nullable = false)
-    private double admissionWeight;
-    @Column(nullable = false)
-    private double targetWeight;
-    @Column(nullable = false)
-    private Date dischargeDate;
-    @Column(nullable = false)
-    private double dischargeWeight;
+    private double weight;
     @Column(nullable = false)
     private String outcome;
-    @OneToOne
+    @OneToOne @JoinColumn(name="sam_id", nullable=false)
     private Child child;
-
-
-    @ManyToOne
-    private NRC nrc;
     @Column(nullable = false)
     private String treatmentProtocol;
-    @Column(nullable = false,unique = true)
-    private int samId;
-    @Column(nullable = false,unique = true)
-    private int nrcId;
-    @Column(nullable = false,unique = true)
-    private int awwId;
-    @ManyToOne
+    @ManyToOne @JoinColumn(name="aww_id", nullable=false)
+    @JsonIgnore
     private AWW aww;
     @OneToMany(mappedBy = "dischargeSummary")
     private List<FollowUp> followUps = new ArrayList<>();
+
+    public DischargeSummary()
+    {
+
+    }
+    public DischargeSummary(int dsId, Date dischargeAt, double weight, String outcome, String treatmentProtocol) {
+        super();
+        this.dsId = dsId;
+        this.dischargeAt = dischargeAt;
+        this.weight = weight;
+        this.outcome = outcome;
+        this.treatmentProtocol = treatmentProtocol;
+    }
+
     public int getDsId() {
         return dsId;
     }
@@ -51,60 +48,20 @@ public class DischargeSummary {
         this.dsId = dsId;
     }
 
-    public String getName() {
-        return name;
+    public Date getDischargeAt() {
+        return dischargeAt;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDischargeAt(Date dischargeAt) {
+        this.dischargeAt = dischargeAt;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public double getWeight() {
+        return weight;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public Date getAdmissionDate() {
-        return admissionDate;
-    }
-
-    public void setAdmissionDate(Date admissionDate) {
-        this.admissionDate = admissionDate;
-    }
-
-    public double getAdmissionWeight() {
-        return admissionWeight;
-    }
-
-    public void setAdmissionWeight(double admissionWeight) {
-        this.admissionWeight = admissionWeight;
-    }
-
-    public double getTargetWeight() {
-        return targetWeight;
-    }
-
-    public void setTargetWeight(double targetWeight) {
-        this.targetWeight = targetWeight;
-    }
-
-    public Date getDischargeDate() {
-        return dischargeDate;
-    }
-
-    public void setDischargeDate(Date dischargeDate) {
-        this.dischargeDate = dischargeDate;
-    }
-
-    public double getDischargeWeight() {
-        return dischargeWeight;
-    }
-
-    public void setDischargeWeight(double dischargeWeight) {
-        this.dischargeWeight = dischargeWeight;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
     public String getOutcome() {
@@ -115,33 +72,6 @@ public class DischargeSummary {
         this.outcome = outcome;
     }
 
-    public int getSamId() {
-        return samId;
-    }
-
-    public void setSamId(int samId) {
-        this.samId = samId;
-    }
-
-    public int getNrcId() {
-        return nrcId;
-    }
-
-    public void setNrcId(int nrcId) {
-        this.nrcId = nrcId;
-    }
-
-    public int getAwwId() {
-        return awwId;
-    }
-
-    public void setAwwId(int awwId) {
-        this.awwId = awwId;
-    }
-    public String getTreatmentProtocol() {
-        return treatmentProtocol;
-    }
-
     public Child getChild() {
         return child;
     }
@@ -150,12 +80,12 @@ public class DischargeSummary {
         this.child = child;
     }
 
-    public NRC getNrc() {
-        return nrc;
+    public String getTreatmentProtocol() {
+        return treatmentProtocol;
     }
 
-    public void setNrc(NRC nrc) {
-        this.nrc = nrc;
+    public void setTreatmentProtocol(String treatmentProtocol) {
+        this.treatmentProtocol = treatmentProtocol;
     }
 
     public AWW getAww() {
@@ -174,7 +104,17 @@ public class DischargeSummary {
         this.followUps = followUps;
     }
 
-    public void setTreatmentProtocol(String treatmentProtocol) {
-        this.treatmentProtocol = treatmentProtocol;
+    @Override
+    public String toString() {
+        return "DischargeSummary{" +
+                "dsId=" + dsId +
+                ", dischargeAt=" + dischargeAt +
+                ", weight=" + weight +
+                ", outcome='" + outcome + '\'' +
+                ", child=" + child +
+                ", treatmentProtocol='" + treatmentProtocol + '\'' +
+                ", aww=" + aww +
+                ", followUps=" + followUps +
+                '}';
     }
 }

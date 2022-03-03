@@ -1,11 +1,13 @@
 package com.example.samprojectdb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class FollowUp {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int followUpId;
     @Column(nullable = false)
     private double height;
@@ -17,15 +19,17 @@ public class FollowUp {
     private String growthStatus;
     private String symptoms;
     @Column(nullable = false)
-    private Date timestamp;
+    private Date createdAt;
     @Column(nullable = false)
-    private Date date;
+    private Date followupDate;
     @Column(nullable = false)
     private boolean isAttempted;
-    @Column(nullable = false,unique = true)
-    private int dsId;
-    @ManyToOne
+    @Column(nullable = false)
+    private Date attemptedDate;
+    @ManyToOne @JoinColumn(name="DS_id", nullable=false)
+    @JsonIgnore
     private DischargeSummary dischargeSummary;
+
     public int getFollowUpId() {
         return followUpId;
     }
@@ -54,14 +58,6 @@ public class FollowUp {
         return muac;
     }
 
-    public DischargeSummary getDischargeSummary() {
-        return dischargeSummary;
-    }
-
-    public void setDischargeSummary(DischargeSummary dischargeSummary) {
-        this.dischargeSummary = dischargeSummary;
-    }
-
     public void setMuac(double muac) {
         this.muac = muac;
     }
@@ -82,20 +78,20 @@ public class FollowUp {
         this.symptoms = symptoms;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getFollowupDate() {
+        return followupDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setFollowupDate(Date followupDate) {
+        this.followupDate = followupDate;
     }
 
     public boolean isAttempted() {
@@ -106,11 +102,19 @@ public class FollowUp {
         isAttempted = attempted;
     }
 
-    public int getDsId() {
-        return dsId;
+    public Date getAttemptedDate() {
+        return attemptedDate;
     }
 
-    public void setDsId(int dsId) {
-        this.dsId = dsId;
+    public void setAttemptedDate(Date attemptedDate) {
+        this.attemptedDate = attemptedDate;
+    }
+
+    public DischargeSummary getDischargeSummary() {
+        return dischargeSummary;
+    }
+
+    public void setDischargeSummary(DischargeSummary dischargeSummary) {
+        this.dischargeSummary = dischargeSummary;
     }
 }

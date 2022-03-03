@@ -1,12 +1,14 @@
 package com.example.samprojectdb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class AWW {
-    @Id  @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int awwId;
     @Column(nullable = false)
     private String name;
@@ -14,41 +16,29 @@ public class AWW {
     private String username;
     @Column(nullable = false)
     private String password;
-    @Column(unique = true,nullable = false)
-    private int awcId;
-
-
-
-    @ManyToOne
+    @ManyToOne @JoinColumn(name="AWC_id", nullable=false)
     private AWC awc;
     @OneToMany(mappedBy = "aww")
-    //@JoinColumn(referencedColumnName = "childId")
+    @JsonIgnore
     private List<Child> children=new ArrayList<>();
     @OneToMany(mappedBy = "aww")
+    @JsonIgnore
     private List<DischargeSummary> dischargeSummaries=new ArrayList<>();
-    public AWC getAwc() {
-        return awc;
+
+    public AWW()
+    {
+
     }
 
-    public void setAwc(AWC awc) {
-        this.awc = awc;
-    }
+//    public AWW(int awwId, String name, String username, String password) {
+//        super();
+//        this.awwId = awwId;
+//        this.name = name;
+//        this.username = username;
+//        this.password = password;
+//    }
 
-    public List<Child> getChildren() {
-        return children;
-    }
 
-    public void setChildren(ArrayList<Child> children) {
-        this.children = children;
-    }
-
-    public List<DischargeSummary> getDischargeSummaries() {
-        return dischargeSummaries;
-    }
-
-    public void setDischargeSummaries(ArrayList<DischargeSummary> dischargeSummaries) {
-        this.dischargeSummaries = dischargeSummaries;
-    }
     public int getAwwId() {
         return awwId;
     }
@@ -81,11 +71,27 @@ public class AWW {
         this.password = password;
     }
 
-    public int getAwcId() {
-        return awcId;
+    public AWC getAwc() {
+        return awc;
     }
 
-    public void setAwcId(int awcId) {
-        this.awcId = awcId;
+    public void setAwc(AWC awc) {
+        this.awc = awc;
+    }
+
+    public List<Child> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Child> children) {
+        this.children = children;
+    }
+
+    public List<DischargeSummary> getDischargeSummaries() {
+        return dischargeSummaries;
+    }
+
+    public void setDischargeSummaries(List<DischargeSummary> dischargeSummaries) {
+        this.dischargeSummaries = dischargeSummaries;
     }
 }

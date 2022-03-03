@@ -1,26 +1,28 @@
 package com.example.samprojectdb.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class NRC {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int nrcId;
     @Column(nullable = false)
     private String address;
     @Column(nullable = false)
     private String pincode;
     //GPS location
-    @Column(nullable = false,unique = true)
-    private int csId;
     @OneToMany(mappedBy = "nrc")
+    @JsonIgnore
     private List<Child> children=new ArrayList<>();
-    @OneToMany(mappedBy = "nrc")
-    private List<DischargeSummary> dischargeSummaries=new ArrayList<>();
-    @OneToOne
+//    @OneToMany(mappedBy = "nrc")
+//    private List<DischargeSummary> dischargeSummaries=new ArrayList<>();
+    @OneToOne  @JoinColumn(name="CS_id", nullable=false)
     private CareSpecialist cs;
+
     public int getNrcId() {
         return nrcId;
     }
@@ -41,6 +43,10 @@ public class NRC {
         return pincode;
     }
 
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
     public List<Child> getChildren() {
         return children;
     }
@@ -49,31 +55,11 @@ public class NRC {
         this.children = children;
     }
 
-    public List<DischargeSummary> getDischargeSummaries() {
-        return dischargeSummaries;
-    }
-
-    public void setDischargeSummaries(List<DischargeSummary> dischargeSummaries) {
-        this.dischargeSummaries = dischargeSummaries;
-    }
-
     public CareSpecialist getCs() {
         return cs;
     }
 
     public void setCs(CareSpecialist cs) {
         this.cs = cs;
-    }
-
-    public void setPincode(String pincode) {
-        this.pincode = pincode;
-    }
-
-    public int getCsId() {
-        return csId;
-    }
-
-    public void setCsId(int csId) {
-        this.csId = csId;
     }
 }
