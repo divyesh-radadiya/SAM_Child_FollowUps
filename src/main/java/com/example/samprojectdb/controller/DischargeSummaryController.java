@@ -18,7 +18,6 @@ public class DischargeSummaryController {
     @Autowired
     private DischargeSummaryRepo dischargeSummaryRepo;
 
-
     @RequestMapping("/getAll")
     @ResponseBody
     public List<DischargeSummary> getAll()
