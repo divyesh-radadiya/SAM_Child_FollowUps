@@ -1,9 +1,10 @@
 package com.example.samprojectdb.entity;
-
+import com.example.samprojectdb.entity.Admission;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Child {
@@ -41,71 +42,13 @@ public class Child {
     @Column(nullable = false)
     private String growthStatus;
     private String otherSymptoms;
-    @Column(nullable = false)
-    private Date admissionDate;
-    @ManyToOne @JoinColumn(name="NRC_id", nullable=false)
-    private NRC nrc;
-    @ManyToOne @JoinColumn(name="AWW_id", nullable=true)
-    private AWW aww;
-    @OneToOne(mappedBy = "child")
-    @JsonIgnore
-    private DischargeSummary dischargeSummary;
-
+    @OneToMany(mappedBy = "child")
+    private List<Admission> admissionList;
     public Child()
     {
 
     }
 
-    public Child(int samId, int uhid, int rchId, String name, int age, Date dob, char gender, String address, String contactNumber, String relationshipDetails, String caste, String religion, boolean bpl, double height, double weight, double muac, String growthStatus, String otherSymptoms, Date admissionDate) {
-        super();
-        this.samId = samId;
-        this.uhid = uhid;
-        this.rchId = rchId;
-        this.name = name;
-        this.age = age;
-        this.dob = dob;
-        this.gender = gender;
-        this.address = address;
-        this.contactNumber = contactNumber;
-        this.relationshipDetails = relationshipDetails;
-        this.caste = caste;
-        this.religion = religion;
-        this.bpl = bpl;
-        this.height = height;
-        this.weight = weight;
-        this.muac = muac;
-        this.growthStatus = growthStatus;
-        this.otherSymptoms = otherSymptoms;
-        this.admissionDate = admissionDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Child{" +
-                "samId=" + samId +
-                ", uhid=" + uhid +
-                ", rchId=" + rchId +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", dob=" + dob +
-                ", gender=" + gender +
-                ", address='" + address + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                ", relationshipDetails='" + relationshipDetails + '\'' +
-                ", caste='" + caste + '\'' +
-                ", religion='" + religion + '\'' +
-                ", bpl=" + bpl +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", muac=" + muac +
-                ", growthStatus='" + growthStatus + '\'' +
-                ", otherSymptoms='" + otherSymptoms + '\'' +
-                ", admissionDate=" + admissionDate +
-                ", nrc=" + nrc +
-                ", aww=" + aww +
-                ", dischargeSummary=" + dischargeSummary +
-                '}';
-    }
 
     public int getSamId() {
         return samId;
@@ -251,35 +194,6 @@ public class Child {
         this.otherSymptoms = otherSymptoms;
     }
 
-    public Date getAdmissionDate() {
-        return admissionDate;
-    }
 
-    public void setAdmissionDate(Date admissionDate) {
-        this.admissionDate = admissionDate;
-    }
 
-    public NRC getNrc() {
-        return nrc;
-    }
-
-    public void setNrc(NRC nrc) {
-        this.nrc = nrc;
-    }
-
-    public AWW getAww() {
-        return aww;
-    }
-
-    public void setAww(AWW aww) {
-        this.aww = aww;
-    }
-
-    public DischargeSummary getDischargeSummary() {
-        return dischargeSummary;
-    }
-
-    public void setDischargeSummary(DischargeSummary dischargeSummary) {
-        this.dischargeSummary = dischargeSummary;
-    }
 }

@@ -23,7 +23,6 @@ public class AWC {
     @OneToMany(mappedBy = "awc")
     @JsonIgnore
     private List<AWW> awws=new ArrayList<>();
-
     public AWC()
     {
 

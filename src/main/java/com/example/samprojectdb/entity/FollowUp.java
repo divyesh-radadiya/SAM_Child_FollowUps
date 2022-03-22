@@ -26,7 +26,7 @@ public class FollowUp {
     private boolean isAttempted;
     @Column(nullable = false)
     private Date attemptedDate;
-    @ManyToOne @JoinColumn(name="DS_id", nullable=false)
+    @ManyToOne @JoinColumn(nullable=false)
     @JsonIgnore
     private DischargeSummary dischargeSummary;
 

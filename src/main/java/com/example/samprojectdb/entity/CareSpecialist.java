@@ -10,11 +10,11 @@ public class CareSpecialist {
     private int csId;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private String username;
-    @Column(nullable = false)
-    private String password;
-    @OneToOne(mappedBy = "cs")
+//    @Column(nullable = false)
+//    private String username;
+//    @Column(nullable = false)
+//    private String password;
+    @OneToOne
     @JsonIgnore
     private NRC nrc;
 
@@ -26,8 +26,8 @@ public class CareSpecialist {
     public CareSpecialist(String name, String username, String password) {
         super();
         this.name = name;
-        this.username = username;
-        this.password = password;
+//        this.username = username;
+//        this.password = password;
     }
 
     public int getCsId() {
@@ -44,22 +44,6 @@ public class CareSpecialist {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public NRC getNrc() {

@@ -17,16 +17,16 @@ public class DischargeSummary {
     private double weight;
     @Column(nullable = false)
     private String outcome;
-    @OneToOne @JoinColumn(name="sam_id", nullable=false)
-    private Child child;
     @Column(nullable = false)
     private String treatmentProtocol;
-    @ManyToOne @JoinColumn(name="aww_id", nullable=false)
+    @ManyToOne
     @JsonIgnore
     private AWW aww;
     @OneToMany(mappedBy = "dischargeSummary")
     private List<FollowUp> followUps = new ArrayList<>();
 
+    @OneToOne @JsonIgnore
+    private Admission admission;
     public DischargeSummary()
     {
 
@@ -72,13 +72,6 @@ public class DischargeSummary {
         this.outcome = outcome;
     }
 
-    public Child getChild() {
-        return child;
-    }
-
-    public void setChild(Child child) {
-        this.child = child;
-    }
 
     public String getTreatmentProtocol() {
         return treatmentProtocol;
@@ -102,19 +95,5 @@ public class DischargeSummary {
 
     public void setFollowUps(List<FollowUp> followUps) {
         this.followUps = followUps;
-    }
-
-    @Override
-    public String toString() {
-        return "DischargeSummary{" +
-                "dsId=" + dsId +
-                ", dischargeAt=" + dischargeAt +
-                ", weight=" + weight +
-                ", outcome='" + outcome + '\'' +
-                ", child=" + child +
-                ", treatmentProtocol='" + treatmentProtocol + '\'' +
-                ", aww=" + aww +
-                ", followUps=" + followUps +
-                '}';
     }
 }

@@ -14,13 +14,17 @@ public class NRC {
     private String address;
     @Column(nullable = false)
     private String pincode;
-    //GPS location
+
     @OneToMany(mappedBy = "nrc")
-    @JsonIgnore
-    private List<Child> children=new ArrayList<>();
+    private List<Admission> admissions;
+    //GPS location
+//    @OneToMany(mappedBy = "nrc")
+//    @JsonIgnore
+//    private List<Child> children=new ArrayList<>();
 //    @OneToMany(mappedBy = "nrc")
 //    private List<DischargeSummary> dischargeSummaries=new ArrayList<>();
-    @OneToOne  @JoinColumn(name="CS_id", nullable=false)
+    @OneToOne(mappedBy = "nrc")  @JoinColumn(nullable=false)
+    @JsonIgnore
     private CareSpecialist cs;
 
     public int getNrcId() {
@@ -45,14 +49,6 @@ public class NRC {
 
     public void setPincode(String pincode) {
         this.pincode = pincode;
-    }
-
-    public List<Child> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<Child> children) {
-        this.children = children;
     }
 
     public CareSpecialist getCs() {
