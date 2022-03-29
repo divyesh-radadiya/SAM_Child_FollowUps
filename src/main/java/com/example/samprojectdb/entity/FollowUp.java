@@ -7,58 +7,95 @@ import java.util.Date;
 
 @Entity
 public class FollowUp {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int followUpId;
-    @Column(nullable = false)
-    private double height;
-    @Column(nullable = false)
-    private double weight;
-    @Column(nullable = false)
-    private double muac;
-    @Column(nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer followUpId;
+    @Column(nullable = true)
+    private Double height;
+    @Column(nullable = true)
+    private Double weight;
+    @Column(nullable = true)
+    private Double muac;
+    @Column(nullable = true)
     private String growthStatus;
+    @Column(nullable = true)
     private String symptoms;
     @Column(nullable = false)
     private Date createdAt;
     @Column(nullable = false)
     private Date followupDate;
     @Column(nullable = false)
-    private boolean isAttempted;
-    @Column(nullable = false)
+    private Boolean isAttempted;
+    @Column
     private Date attemptedDate;
-    @ManyToOne @JoinColumn(nullable=false)
+    @ManyToOne
+    @JoinColumn(nullable = false)
     @JsonIgnore
     private DischargeSummary dischargeSummary;
 
-    public int getFollowUpId() {
+    public FollowUp() {
+
+    }
+
+    public FollowUp(Integer followUpId, Double height, Double weight, Double muac, String growthStatus, String symptoms, Date createdAt, Date followupDate, Boolean isAttempted, Date attemptedDate) {
+        super();
+        this.followUpId = followUpId;
+        this.height = height;
+        this.weight = weight;
+        this.muac = muac;
+        this.growthStatus = growthStatus;
+        this.symptoms = symptoms;
+        this.createdAt = createdAt;
+        this.followupDate = followupDate;
+        this.isAttempted = isAttempted;
+        this.attemptedDate = attemptedDate;
+    }
+
+    @Override
+    public String toString() {
+        return "FollowUp{" +
+                "followUpId=" + followUpId +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", muac=" + muac +
+                ", growthStatus='" + growthStatus + '\'' +
+                ", symptoms='" + symptoms + '\'' +
+                ", createdAt=" + createdAt +
+                ", followupDate=" + followupDate +
+                ", isAttempted=" + isAttempted +
+                ", attemptedDate=" + attemptedDate +
+                '}';
+    }
+
+    public Integer getFollowUpId() {
         return followUpId;
     }
 
-    public void setFollowUpId(int followUpId) {
+    public void setFollowUpId(Integer followUpId) {
         this.followUpId = followUpId;
     }
 
-    public double getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
-    public double getMuac() {
+    public Double getMuac() {
         return muac;
     }
 
-    public void setMuac(double muac) {
+    public void setMuac(Double muac) {
         this.muac = muac;
     }
 
@@ -94,11 +131,11 @@ public class FollowUp {
         this.followupDate = followupDate;
     }
 
-    public boolean isAttempted() {
+    public Boolean getAttempted() {
         return isAttempted;
     }
 
-    public void setAttempted(boolean attempted) {
+    public void setAttempted(Boolean attempted) {
         isAttempted = attempted;
     }
 
@@ -108,13 +145,5 @@ public class FollowUp {
 
     public void setAttemptedDate(Date attemptedDate) {
         this.attemptedDate = attemptedDate;
-    }
-
-    public DischargeSummary getDischargeSummary() {
-        return dischargeSummary;
-    }
-
-    public void setDischargeSummary(DischargeSummary dischargeSummary) {
-        this.dischargeSummary = dischargeSummary;
     }
 }

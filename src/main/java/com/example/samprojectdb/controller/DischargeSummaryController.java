@@ -18,6 +18,8 @@ public class DischargeSummaryController {
     @Autowired
     private DischargeSummaryRepo dischargeSummaryRepo;
 
+    //PUT LOGIC OF GETTING FOLLOWUPs BY DSID here.
+
     @RequestMapping("/getAll")
     @ResponseBody
     public List<DischargeSummary> getAll()
