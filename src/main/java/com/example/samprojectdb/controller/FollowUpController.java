@@ -45,7 +45,7 @@ public class FollowUpController {
                 System.out.println("This followUp has already been attempted");
                 return null;
             }
-            followUp2.setAttemptedDate(new java.util.Date());
+            followUp2.setAttemptedDate(followUp.getAttemptedDate());
             followUp2.setAttempted(true);
             followUp2.setHeight(followUp.getHeight());
             followUp2.setWeight(followUp.getWeight());
@@ -76,7 +76,7 @@ public class FollowUpController {
                 else
                 {
                     System.out.println("Normal");
-                    followUp.setGrowthStatus("Normal");
+                    followUp2.setGrowthStatus("Normal");
                 }
             }
             else{
@@ -84,7 +84,7 @@ public class FollowUpController {
             }
             followUpRepo.save(followUp2);
             //CREATE NEXT FOLLOWUP HERE.
-            Date dt = new Date();
+            Date dt = followUp.getAttemptedDate();
             Date ct = (Date)dt.clone();
             Calendar c = Calendar.getInstance();
             c.setTime(dt);

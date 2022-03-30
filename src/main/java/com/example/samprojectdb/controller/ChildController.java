@@ -35,40 +35,40 @@ public class ChildController {
     public Optional<GrowthStatusRules> getGrowthStatus(double ht) {
         return growthStatusRulesRepo.findById(ht);
     }
-
-    @GetMapping("/getGrowthStatus/{samId}")
-    public String findGS(@PathVariable("samId") int samId) {
-        Child tempChild = childRepo.findBySamId(samId);
-        if(tempChild==null)
-            return "NA";
-        //System.out.println(childRepo.findHeightBySamId(samId));
-        double ht = tempChild.getHeight();
-        Optional<GrowthStatusRules> growthStatusRules = getGrowthStatus(ht);
-        if (growthStatusRules.isPresent()) {
-            GrowthStatusRules growthStatusRules1 = growthStatusRules.get();
-            double threshold = 0;
-            switch (tempChild.getGender()) {
-                case 'M':
-                    threshold = growthStatusRules1.getBoys3d();
-                    break;
-                case 'F':
-                    threshold = growthStatusRules1.getGirls3d();
-                    break;
-                default:
-                    System.out.println("Some error here in FollowUpController gender switch case!!");
-                    System.exit(0);
-                    break;
-            }
-            if (tempChild.getWeight() < threshold) {
-                System.out.println("SAM");
-                return "SAM";
-            } else {
-                System.out.println("Normal");
-                return "Normal";
-            }
-        }
-        return "NA";
-    }
+//    //Return current growth status as per as latest followup
+//    @GetMapping("/getCurrentGrowthStatus/{samId}")
+//    public String findGS(@PathVariable("samId") int samId) {
+//        Child tempChild = childRepo.findBySamId(samId);
+//        if(tempChild==null)
+//            return "NA";
+//        //System.out.println(childRepo.findHeightBySamId(samId));
+//        double ht = tempChild.getHeight();
+//        Optional<GrowthStatusRules> growthStatusRules = getGrowthStatus(ht);
+//        if (growthStatusRules.isPresent()) {
+//            GrowthStatusRules growthStatusRules1 = growthStatusRules.get();
+//            double threshold = 0;
+//            switch (tempChild.getGender()) {
+//                case 'M':
+//                    threshold = growthStatusRules1.getBoys3d();
+//                    break;
+//                case 'F':
+//                    threshold = growthStatusRules1.getGirls3d();
+//                    break;
+//                default:
+//                    System.out.println("Some error here in FollowUpController gender switch case!!");
+//                    System.exit(0);
+//                    break;
+//            }
+//            if (tempChild.getWeight() < threshold) {
+//                System.out.println("SAM");
+//                return "SAM";
+//            } else {
+//                System.out.println("Normal");
+//                return "Normal";
+//            }
+//        }
+//        return "NA";
+//    }
 
     @RequestMapping("/findByName/{name}")
     public Child findChildByName(@PathVariable("name") String name)

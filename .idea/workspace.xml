@@ -7,8 +7,11 @@
     <list default="true" id="16bae4b0-e72a-45be-9153-a9a94cd4c885" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/ChildController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/ChildController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/repository/ChildRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/repository/ChildRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/FollowUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/controller/FollowUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/entity/FollowUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/samprojectdb/entity/FollowUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/ChildController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/ChildController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/FollowUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/controller/FollowUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/entity/FollowUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/samprojectdb/entity/FollowUp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +112,7 @@
       <workItem from="1647924755518" duration="1336000" />
       <workItem from="1648094659112" duration="9000" />
       <workItem from="1648453887070" duration="13117000" />
-      <workItem from="1648545631947" duration="15632000" />
+      <workItem from="1648545631947" duration="17169000" />
     </task>
     <servers />
   </component>

@@ -56,6 +56,7 @@ public class FollowUp {
         this.createdAt = createdAt;
         this.followupDate = followupDate;
         this.isAttempted = isAttempted;
+        //this.attemptedDate = attemptedDate;
         this.dischargeSummary = dischargeSummary;
     }
 
