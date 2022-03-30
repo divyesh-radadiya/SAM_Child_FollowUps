@@ -37,9 +37,9 @@ public class FollowUp {
 
     }
 
-    public FollowUp(Integer followUpId, Double height, Double weight, Double muac, String growthStatus, String symptoms, Date createdAt, Date followupDate, Boolean isAttempted, Date attemptedDate) {
+    public FollowUp(Double height, Double weight, Double muac, String growthStatus, String symptoms, Date createdAt, Date followupDate, Boolean isAttempted, Date attemptedDate) {
         super();
-        this.followUpId = followUpId;
+        //this.followUpId = followUpId;
         this.height = height;
         this.weight = weight;
         this.muac = muac;
@@ -49,6 +49,14 @@ public class FollowUp {
         this.followupDate = followupDate;
         this.isAttempted = isAttempted;
         this.attemptedDate = attemptedDate;
+    }
+
+    public FollowUp(Date createdAt, Date followupDate, Boolean isAttempted, DischargeSummary dischargeSummary) {
+        super();
+        this.createdAt = createdAt;
+        this.followupDate = followupDate;
+        this.isAttempted = isAttempted;
+        this.dischargeSummary = dischargeSummary;
     }
 
     @Override
@@ -145,5 +153,13 @@ public class FollowUp {
 
     public void setAttemptedDate(Date attemptedDate) {
         this.attemptedDate = attemptedDate;
+    }
+
+    public DischargeSummary getDischargeSummary() {
+        return dischargeSummary;
+    }
+
+    public void setDischargeSummary(DischargeSummary dischargeSummary) {
+        this.dischargeSummary = dischargeSummary;
     }
 }

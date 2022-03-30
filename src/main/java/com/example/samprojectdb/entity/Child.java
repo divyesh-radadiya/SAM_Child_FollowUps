@@ -42,7 +42,7 @@ public class Child {
     @Column(nullable = false)
     private String growthStatus;
     private String otherSymptoms;
-    @OneToMany(mappedBy = "child")
+    @OneToMany(mappedBy = "child") @JsonIgnore
     private List<Admission> admissionList;
     public Child()
     {
