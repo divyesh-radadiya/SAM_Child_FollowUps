@@ -45,7 +45,7 @@ public class ApiController
     {
         UserDetails userDetails = jwtRequestFilter.getUserDetails();
         String username = userDetails.getUsername();
-        Optional<User> user = userRepository.findByUserName(username);
+        Optional<User> user = userRepository.findByUsername(username);
         user.orElseThrow(()->new UsernameNotFoundException("Not found: " + username));
         return user;
     }

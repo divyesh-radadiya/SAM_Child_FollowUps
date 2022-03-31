@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackageClasses = {AdmissionRepo.class, AwcRepo.class, AwwRepo.class, CareSpecialistRepo.class, ChildRepo.class, DischargeSummaryRepo.class, FollowUpRepo.class, NrcRepo.class, UserRepository.class})
+@EnableJpaRepositories(basePackageClasses = {AdmissionRepo.class, AwcRepo.class, AwwRepo.class, CareSpecialistRepo.class, ChildRepo.class, DischargeSummaryRepo.class, FollowUpRepo.class, GrowthStatusRulesRepo.class, NrcRepo.class, UserRepository.class})
 //@EnableJpaRepositories(basePackageClasses = AwcRepo.class)
 public class SaMprojectDbApplication {
 
