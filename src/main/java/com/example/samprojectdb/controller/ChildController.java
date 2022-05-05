@@ -41,8 +41,6 @@ public class ChildController {
     @Autowired
     private DischargeSummaryRepo dischargeSummaryRepo;
 
-
-
     @GetMapping("/children")
     @ResponseBody
     public List<Child> getAllChildren(){
