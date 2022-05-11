@@ -41,16 +41,18 @@ public class DischargeSummaryController {
     public void setResponseHeader(HttpServletResponse response) {
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
-//    @CrossOrigin(origins = "http://localhost:8100")
-    @RequestMapping("/findByAwwId/{aww_id}")
-    public List<DischargeSummary> getAllDischargeSummaries(@PathVariable("aww_id") int awwId)
+
+    @RequestMapping("/findByAwwId")
+    public List<DischargeSummary> getAllDischargeSummaries()
     {
+        int uid=1;
         UserDetails userDetails = jwtRequestFilter.getUserDetails();
         String username = userDetails.getUsername();
         Optional<User> user = userRepository.findByUsername(username);
         user.orElseThrow(()->new UsernameNotFoundException("Not found: " + username));
         user.ifPresent(curUser -> System.out.println(curUser.getAww().getAwwId()));
-
-        return dischargeSummaryRepo.findDischargeSummaryByAww_AwwId(awwId);
+        System.out.println(user.get().getAww().getAwwId());
+        uid=user.get().getAww().getAwwId();
+        return dischargeSummaryRepo.findDischargeSummaryByAww_AwwId(uid);
     }
 }

@@ -14,6 +14,7 @@ com\example\samprojectdb\security\beans\AuthenticateResponse.class
 com\example\samprojectdb\controller\AdmissionController.class
 com\example\samprojectdb\entity\DischargeSummary.class
 com\example\samprojectdb\entity\User.class
+com\example\samprojectdb\repository\UserRepo.class
 com\example\samprojectdb\repository\CareSpecialistRepo.class
 com\example\samprojectdb\entity\CareSpecialist.class
 com\example\samprojectdb\controller\AwwController.class
